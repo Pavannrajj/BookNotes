@@ -64,7 +64,7 @@ app.post("/log-in", async (req, res) => {
     U_id = user_id;
 
     const imageUrls = await userspage(user_id);
-    const bookId = await getbookId(user_id);
+    var bookId = await getbookId(user_id);
     const user = users.find((row) => row.user_id == user_id);
 
     const FinalimageUrls = bookId.map((bookId, index) => ({

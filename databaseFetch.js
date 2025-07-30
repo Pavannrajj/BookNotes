@@ -1,14 +1,18 @@
 
-import pg from "pg"
+import pg from "pg";
 import fetchData from "./api.js";
+import dotenv from "dotenv";
+
+dotenv.config();  
 
 const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "BooksProject",
-    password: "pavanWarrior",
-    port: 5432,
-  });
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
+});
+
 db.connect();
 
 export async function userspage(id) {
