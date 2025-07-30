@@ -1,0 +1,168 @@
+body{
+    background-color: #FBFBFB;
+}
+
+
+.welcome{
+    display: flex;
+    align-items: center;
+    gap: 150px;
+    padding: 0px;
+}
+.welcome >img{
+    width: 25%;
+    border-radius: 33%;
+    margin-left:5% ;
+    
+}
+
+.welcome>h1{
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #727D73;
+    font-size: 65px;
+    text-decoration: underline;
+    text-decoration-color: #C5BAFF;
+    text-decoration-thickness:5px ;     
+    padding-bottom: 5px;
+   
+    
+}
+
+#Container{
+    
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 100px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding-right: 20px;
+    padding-top: 0%;
+    height: auto;
+    
+}
+#main-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 290px;
+    border-radius: 32px;
+    background-color: bisque;
+    padding-right:10px ;
+    padding-bottom: 0px;
+    height: auto;
+    
+}
+
+#usersCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: #E8F9FF;
+    padding: px 20px;
+    border-radius: 15px;
+    margin-left: 30px;
+    min-width:500px ;
+    padding-bottom: 60px;
+    margin-bottom:0px ;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+
+}
+
+
+
+
+.userTab{
+    background-color:#C4D9FF;
+    
+    border-radius: 8px;
+    font-weight: bold;
+    width:350px;
+    max-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: ;
+    margin-right: 0px;
+}
+.userTab:hover{
+    background-color:#b0c2e5;
+}
+
+#usersCard>h3{
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #727D73;
+    font-size: 40px;
+    padding: 0%;
+    padding-bottom: ;
+}
+
+.userTab>h4{
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 30px;
+    padding: 0%;
+}
+
+
+
+#sleepImage img{
+    width : 500px;
+    height: auto;
+    margin-right:10px ;
+    margin-top:10px ;
+}
+
+button{
+    background-color: #C5BAFF;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    border: 0;
+    margin-bottom: 20px;
+    margin-left: 70px;
+    margin-right: 0;
+    padding:0%;
+    border-radius: 12px;
+    padding:0px 5px
+    
+
+}
+button:hover{
+    background-color: #b6addf;
+}
+
+button>p{
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 25px;
+    padding: 0%;
+}
+
+
+
+.login{
+    
+    margin-top:100px ;
+    width: 88%;
+}
+
+
+
+
+body{
+    
+    margin: 0%;
+    margin-top:50px ;
+}
+
+
+#main-content{
+    background-color: ;
+    height: auto;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+

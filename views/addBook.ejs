@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="./styles/login.css"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FBFBFB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: ;
+            padding: 0%;
+            margin: 0%;
+        }
+    </style>
+</head>
+<body>
+    <form action="/addBook" method="POST">
+        <h2>Add a Book</h2>
+
+        <input type="text" name="bookName" placeholder="Book Name" required />
+        <input type="text" name="authorName" placeholder="Author Name" required />
+        <input type="text" name="isbnNumber" placeholder="ISBN Number" required maxlength="13" />
+
+
+        <input type="submit" value="Add Book" />
+    </form>
+</body>
+</html>

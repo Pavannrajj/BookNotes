@@ -1,0 +1,109 @@
+/* === GLOBAL STYLES === */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* === FORM CONTAINER === */
+form {
+  background: #FBFBFB;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin-right: 100px;
+}
+
+/* === TEXT, PASSWORD, SUBMIT INPUT STYLING === */
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* === SUBMIT BUTTON SPECIFIC === */
+input[type="submit"] {
+  background-color: #408342;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #1B4F1D;
+}
+
+/* === PASSWORD FIELD WRAPPER (for eye icon) === */
+.password-wrapper {
+  position: relative;
+  margin: 0;
+}
+
+/* Extra padding to make space for toggle icon */
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+/* Toggle (eye) icon for password */
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #af1515;
+  cursor: pointer;
+  margin-right: 5px;
+  padding: 0;
+}
+
+/* === EYE ICON IMAGE STYLING === */
+.password-wrapper img {
+  width: 30px;
+  padding-bottom: 10px;
+}
+
+/* === LOGO SECTION === */
+.logo {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo > img {
+  width: 30%;
+  border-radius: 20%;
+  margin-left: 0;
+  margin-right: 300px;
+}
+
+/* === HEADING === */
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+  font-size: 25px;
+}
+
+/* === MESSAGE TEXT === */
+.message {
+  color: green;
+  text-align: center;
+}
+
+/* === RESPONSIVE STYLES === */
+@media (max-width: 500px) {
+  form {
+    width: 300px;
+  }
+
+  img {
+    width: 30%;
+  }
+}

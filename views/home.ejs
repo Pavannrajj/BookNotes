@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNotes</title>
+    <link rel="stylesheet" href="./styles/main.css">  
+    <link rel="stylesheet" href="./styles/footer.css">  
+</head>
+<body>
+    
+    <div class = 'welcome'>
+
+        <img src="./static/logo.jpg" alt="BookNotes Logo">
+        <h1>Welcome to Book Notes website.</h1>
+    </div>
+    <div id = "Container">
+        
+        <div id = "main-content">
+        <div id = "usersCard">
+            <h3>Our users</h3>
+           
+            <%if (locals.users) {%>
+            
+                <% users.forEach(user => {%>
+                    <form action="/user" method="get">
+                        
+                        <button type="submit" class = "userTab">
+                            <input type="hidden" name="user" value="<%=user.user_id%>">
+                             <h4><%=user.name%></h4>
+                        
+                        </button>
+                    </form>
+            <%});%>
+        </div>
+            <div class = "rightside">
+            <div id = "sleepImage"> <img src="./static/Bookreading.svg" alt="Bookreading"></div>
+        <%}%><div class = "signin-button">
+            <form action="/signup" method="get">
+
+            <button type="submit"><p>New here ? Register now!</p></button>
+            </form>
+            </div>
+             </div>   
+    </div>
+    </div>
+    <div class="login-button">
+        <form action="/log-in" method="get">
+
+            <button type="submit" class="login"><p>Login to add books or update your notes</p></button>
+            </form>
+    </div>
+
+
+<%-include('./partials/footer.ejs')%>

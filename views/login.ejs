@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="./styles/login.css"> 
+     <link rel="stylesheet" href="./styles/footer.css">   
+</head>
+<body>
+    <div class="logo">
+        <img src="./static/logo.jpg" alt="logo svg">
+    
+
+    <form action="/log-in" method="post" class = "container">
+        <h2>Login</h2>
+
+        <input type="text" name="username" placeholder="Username" required />
+
+        <div class="password-wrapper">
+            <input type="password" name="password" placeholder="Password" id="password" required />
+            <img src="/static/eye.svg" alt="Show" class="toggle-password" id="eyeIcon" onclick="togglePassword()" />
+        </div>
+        <%if(locals.error){%>
+        <p style="color: red;"><%-error%></p>
+        <%}%>
+        <input type="submit" value="Login" />
+
+
+    </form>
+</div>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const eyeIcon = document.getElementById("eyeIcon");
+    
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.src = "/static/eye-slash.svg"; // eye-off icon
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.src = "/static/eye.svg"; // eye icon
+            }
+        }
+    </script>
+    
+
+<%-include('./partials/footer.ejs')%>
+</body>
+</html>

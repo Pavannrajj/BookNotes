@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user</title>
+    <link rel="stylesheet" href="./styles/user.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    
+
+</head>
+<body>
+    <div class = "navbar">
+        <img src="./static/logo.jpg" alt="BookNotes Logo">
+        <h1><%-userName%></h2>
+            
+        
+            <div class="add-button">
+            <form action="/addBook" method="get" >
+                
+                <input type="submit" value="Add books" />
+            </form>
+            </div>
+            
+    </div>
+    <h4><u>Books read by <%-userName%></u></h4>
+
+    <div id = "image-container">
+
+    </div>
+
+
+    <% console.log("image url in ejs:",imageUrls) %>
+
+
+    <script> 
+    
+        const userName = "<%- userName %>"; // Pass EJS variable as string to JS
+        
+        const imageData = <%- JSON.stringify(imageUrls) %>;
+        console.log(imageData);
+        const container = document.getElementById('image-container');
+    
+        imageData.forEach(({ bookId, url }) => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = 'book cover';
+            img.style.width = "300px";
+            img.style.height = "500px";
+            img.style.margin = "10px";
+    
+            img.addEventListener('click', () => {
+                // Redirect to /notes with bookId and userName as query parameters
+                window.location.href = `/notesEdit?bookId=${encodeURIComponent(bookId)}&userName=${encodeURIComponent(userName)}`;
+            });
+    
+            container.appendChild(img);
+        });
+    
+    </script>
+    
+
+
+<%-include('./partials/footer.ejs')%>

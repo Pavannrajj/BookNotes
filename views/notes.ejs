@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%-userName%></title>
+    <link rel="stylesheet" href="./styles/user.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+
+</head>
+<body>
+    <div class = "navbar">
+        <img src="./static/logo.jpg" alt="BookNotes Logo">
+        
+        <h1><%-userName%> > <%-bookName%> with book id  <%-book_id%></h1> 
+    </div>
+    <div id = "secondBar">
+        <img src="<%-imageUrl%>" alt = "<%-imageUrl%> book cover"></img>
+        <div class = "bookDetails">
+        <h1>Book Name : <%-bookName%></h1>
+        <h1>Author : <%-author%></h1>
+    </div>
+    </div>
+    <div id ="thirdBar">
+        <h1>Notes</h1>
+        <div class = "notes">
+        <% notes.forEach((note)=>{%>
+            <div class = "note">
+                <p>Date :<%-note.time%></p>
+                <h1><%-note.note%></h1>
+                
+
+            </div>
+        
+        <%})%>
+        </div>
+    </div>
+
+
+<script>
+    const imageUrl = <%-JSON.stringify(imageUrl)%>
+    console.log(imageUrl)
+    const container = document.getElementById("secondBar")
+    const img = document.getElementsByTagName('img');
+        img.src = imageUrl;
+        img.alt = 'book cover';
+        img.style.width = "100px";
+        img.style.height = "200px";
+        img.style.margin = "10px";
+        container.appendChild(img);
+</script>
+
+<%-include('./partials/footer.ejs')%>

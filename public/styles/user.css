@@ -1,0 +1,287 @@
+
+body{
+    padding: 0%;
+    margin: 0%
+}
+
+.navbar img{
+    height: ;
+    width: 50px;
+    border: 5px;
+    width: 8%;
+    border-radius: 33%;
+    margin-left:1% ;
+    
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top:20px ;
+    padding-bottom: 20px;
+    border-bottom:10px solid #C5BAFF;
+    max-height: 200px;
+    
+
+}
+
+.navbar h1{
+    color:;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    padding-left: 2%;
+
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #74ad78;
+    font-size: 50px;
+
+}
+
+#image-container img{
+    border: 3px solid #C5BAFF;
+    border-radius: 10px;
+    margin-right:50px ;
+
+    
+}
+
+#image-container >img{
+    box-shadow:5px 5px 10px  #C5BAFF
+}
+
+#image-container {
+    padding-bottom: 70px;
+}
+
+h4{
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #353b36;
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+#image-container img {
+    display: inline-block;
+  }
+
+#secondBar{
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+    padding-left: 50px;
+    gap: 50px;
+    padding-bottom: 40px;
+    
+
+}
+
+#secondBar {
+    position: relative;
+  }
+  
+#secondBar::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 7px;
+    
+    background-color: #C5BAFF;
+  }
+
+#secondBar img{
+    width: 200px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow:5px 5px 10px  #C5BAFF;
+
+    margin-bottom: 20px;
+
+}
+
+#secondBar h1{
+    display: flex;
+    align-items: center;
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #353b36;
+    font-size: 40px;
+    padding-left: 50px;
+    padding: 0px;
+    margin: 0px;
+
+    padding-bottom: 10px;
+}
+
+.bookDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 50px;
+}
+
+
+.notes{
+    margin-left: 4%;
+    margin-right: 4%;
+    width: auto;
+    margin-top: 40px;
+    background-color:;
+}
+
+.note{
+    margin-top: 30px;
+    display: flex;
+    flex-flow: column;
+    border-radius: 12px;
+    background-color: #E8F9FF;
+    padding-left: 30px;
+    padding-right: 30PX;
+    border: 1px solid black;
+}
+
+.note p{
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #353b36;
+    font-size: 20px;
+    padding-left: ;
+}
+
+.note h1,.editContent{
+    width: 100%;
+    background-color: #C4D9FF;
+    min-height: 100px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 20px;
+    width: 98%;
+    border-radius: 15px  ;
+    border: 0px;
+    margin-bottom: 20px;
+    
+
+
+}
+
+.editContent{
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #353b36;
+    font-size: 30px;
+    font-weight:bold;
+    margin-top: 0%;
+    padding-top: 0px;
+    border:0%;
+}
+
+body{
+    background-color: #FBFBFB;
+}
+
+.add-button,{
+    
+    background-color: ;
+    border: 0px;
+    padding: 5px;
+    margin-left: 65%;
+    margin-top: 2.5%;
+
+}
+input[type = "submit"],#pre-thirdBar button{
+    width: 150px;
+    height: 50px;
+    background-color: #C5BAFF;
+    padding: 10px;
+    border: 0px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    font-family: Arial,Arial, Helvetica, sans-serif;
+    color: #353b36;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+
+
+}
+
+body{
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+}
+
+body{
+    padding: 0%;
+    margin: 0%
+}
+
+.ThirdBar-firstRow{
+    display: flex;
+    justify-content: space-between; /* Even spacing */
+    align-items: center; /* Align vertically */
+    padding: 0 10px;
+}
+
+svg{
+    width: 40px;
+    height: 50px;
+}
+
+.ThirdBar-firstRow-second{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    
+}
+
+.ThirdBar-firstRow-second img{
+    width: 50px;
+}
+
+
+.ThirdBar-firstRow-second button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.ThirdBar-firstRow-second img,
+.ThirdBar-firstRow-second svg {
+    padding-top: 5px;
+    width: 35px;
+    height: 35px;
+}
+
+
+
+input[type = "submit"] {
+    
+    border: none;
+    cursor: pointer;
+
+    
+}
+
+.submit-button{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items:end ;
+    margin-right: 20px;
+}
+
+#pre-thirdBar{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+
+}
+
+#pre-thirdBar h1{
+    margin-left: 60px;
+    font-family: Arial,Arial, Helvetica, sans-serif;
+        color: #353b36;
+        font-size: 50px;
+    }
