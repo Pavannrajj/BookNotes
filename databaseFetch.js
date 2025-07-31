@@ -3,6 +3,8 @@ import pg from "pg";
 import fetchData from "./api.js";
 import dotenv from "dotenv";
 
+console.log("DATABASE_URL(at databaseFetch.js):", process.env.DATABASE_URL);
+
 dotenv.config();  
 
 // const db = new pg.Client({

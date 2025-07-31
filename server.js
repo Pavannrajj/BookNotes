@@ -37,6 +37,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Preload user data
+console.log("DATABASE_URL(at server.js):", process.env.DATABASE_URL);
+
 const users = await getusers();
 
 /* ========== ROUTES ========== */
