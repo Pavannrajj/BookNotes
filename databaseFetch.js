@@ -19,7 +19,7 @@ dotenv.config();
 // });
 
 const db = new pg.Client({
-  connectionString: "postgresql://postgres:DuxUFGOEglwKuRFKUURLNptzpUerWtpV@gondola.proxy.rlwy.net:55106/railway",
+  connectionString: "process.env.DATABASE_URL",
   ssl: {
     rejectUnauthorized: false
   }

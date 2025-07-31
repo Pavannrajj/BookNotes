@@ -1,13 +1,14 @@
-import pg from "pg"
-
+import pg from "pg";
+import dotenv from "dotenv";
+dotenv.config();
 
 const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "BooksProject",
-    password: "pavanWarrior",
-    port: 5432,
-  });
+  connectionString: "process.env.DATABASE_URL",
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
 db.connect();
 
 export async function insertNote(book_id,note,date) {
