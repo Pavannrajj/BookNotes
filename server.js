@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
-import env from "dotenv"
-env.config()
+import env from "dotenv";
+dotenv.config()
 
 import {
   getusers,
