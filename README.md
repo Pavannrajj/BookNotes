@@ -30,7 +30,7 @@ External API: OpenLibrary Covers API
 ⚙️ Setup Instructions :
 Note: Test data is not yet available. This will be added in future updates.
 1.Clone the repository:
-        git clone https://github.com/yourusername/booknotes.git
+        git clone https://github.com/Pavannrajj/booknotes.git
         cd booknotes
 2.Install dependencies:
         npm install
