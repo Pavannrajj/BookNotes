@@ -3,7 +3,7 @@ import pg from "pg";
 import fetchData from "./api.js";
 import dotenv from "dotenv";
 
-console.log("DATABASE_URL(at databaseFetch.js):", process.env.DATABASE_URL);
+
 
 dotenv.config();  
 
@@ -17,15 +17,20 @@ dotenv.config();
 //     rejectUnauthorized: false
 //   }
 // });
+console.log("Connecting with:", process.env.DATABASE_URL);  // to ensure correct DB URL used
 
 const db = new pg.Client({
-  connectionString: "process.env.DATABASE_URL",
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
 });
 
-db.connect();
+db.connect()
+    .catch(err => {
+        console.error("DB connection error inside databaseFetch.js :", err);
+        console.error(err.stack);
+    });
 
 export async function userspage(id) {
 

@@ -3,13 +3,17 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const db = new pg.Client({
-  connectionString: "process.env.DATABASE_URL",
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
 });
 
-db.connect();
+db.connect()
+    .catch(err => {
+    console.error("DB connection error inside notes.js:", err);
+    console.error(err.stack);
+  });
 
 export async function insertNote(book_id,note,date) {
     
