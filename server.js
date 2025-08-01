@@ -44,7 +44,7 @@ const users = await getusers();
 /* ========== ROUTES ========== */
 
 // Homepage
-app.get("/home", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const users = await getusers();
     res.render("home.ejs", { users });
