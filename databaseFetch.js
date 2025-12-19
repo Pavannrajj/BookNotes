@@ -1,123 +1,124 @@
-
 import pg from "pg";
 import fetchData from "./api.js";
 import dotenv from "dotenv";
 
+dotenv.config();
 
+const { Pool } = pg;
 
-dotenv.config();  
+console.log("Connecting with:", process.env.DATABASE_URL);
 
-// const db = new pg.Client({
-//   user: process.env.PGUSER,
-//   host: process.env.PGHOST,
-//   database: process.env.PGDATABASE,
-//   password: process.env.PGPASSWORD,
-//   port: process.env.PGPORT,
-//     ssl: {
-//     rejectUnauthorized: false
-//   }
-// });
-console.log("Connecting with:", process.env.DATABASE_URL);  // to ensure correct DB URL used
-
-const db = new pg.Client({
+const db = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
-  }
+  },
+  max: 1,                      // Railway proxy requirement
+  idleTimeoutMillis: 10000,
+  connectionTimeoutMillis: 10000,
+  keepAlive: true              // REQUIRED for ECONNRESET fix
 });
 
-db.connect()
-    .catch(err => {
-        console.error("DB connection error inside databaseFetch.js :", err);
-        console.error(err.stack);
-    });
+db.on("error", (err) => {
+  console.error("Unexpected PostgreSQL error:", err);
+});
+
+/* ------------------- FUNCTIONS ------------------- */
 
 export async function userspage(id) {
+  const result = await db.query(
+    "SELECT identifiertype, identifiernumber FROM book WHERE user_id = $1",
+    [id]
+  );
 
-    const result = await db.query("select identifiertype,identifiernumber from book where user_id = $1",[id])
-    console.log(result.rows)
-    const imageUrls= await fetchData(result.rows)
-    return imageUrls
-
+  const imageUrls = await fetchData(result.rows);
+  return imageUrls;
 }
 
 export async function getapi(id) {
+  const result = await db.query(
+    "SELECT identifiertype, identifiernumber FROM book WHERE book_id = $1",
+    [id]
+  );
 
-    const result = await db.query("select identifiertype,identifiernumber from book where book_id = $1",[id])
-    console.log(result.rows)
-    const imageUrls= await fetchData(result.rows)
-    return imageUrls
-
+  const imageUrls = await fetchData(result.rows);
+  return imageUrls;
 }
 
 export async function getusers() {
-
-    const result = await db.query("select * from users")
-    return result.rows
+  const result = await db.query("SELECT * FROM users");
+  return result.rows;
 }
 
 export async function getbookId(user_id) {
-    const result = await db.query("select book_id from book where user_id = $1",[user_id])
-    return result.rows
+  const result = await db.query(
+    "SELECT book_id FROM book WHERE user_id = $1",
+    [user_id]
+  );
+  return result.rows;
 }
 
 export async function getbookDetails(book_id) {
-    const result = await db.query("select book_name,author from book where book_id = $1",[book_id])
-    return result.rows
+  const result = await db.query(
+    "SELECT book_name, author FROM book WHERE book_id = $1",
+    [book_id]
+  );
+  return result.rows;
 }
 
-export async function credentialCheck(user,password){
+export async function credentialCheck(user, password) {
+  const result = await db.query(
+    "SELECT user_id, name, password FROM users WHERE name = $1",
+    [user]
+  );
 
-    const result  =await db.query("select * from  users")
-    const credential = result.rows
-    if(!credential){
-        throw new Error("database error")
-    }
-    console.log("i am in credential Check");
-    
-    console.log(credential)
-    console.log(user)
-    console.log(password)
-    const matchedRow = credential.find(row => row.name===user && row.password===password)
-    if (matchedRow) {
-     console.log("selected user id : ",matchedRow.user_id)
-        return matchedRow.user_id;
-    }else{
-        throw new Error("Invalid User Name or Password")
-    }
-    
+  if (result.rows.length === 0) {
+    throw new Error("Invalid User Name or Password");
+  }
+
+  const matchedUser = result.rows[0];
+
+  if (matchedUser.password !== password) {
+    throw new Error("Invalid User Name or Password");
+  }
+
+  return matchedUser.user_id;
 }
 
+export async function newUser(user, password) {
+  await db.query(
+    "INSERT INTO users (name, password) VALUES ($1, $2)",
+    [user, password]
+  );
 
-export async function newUser(user,password) {
-    
-    const result = await db.query("insert into users (name,password) values($1,$2); ",[user,password])
-    console.log("its here")
-    console.log("result in new user",result.rows);
-    
-    return result.rows
+  return "User created successfully";
 }
 
-export async function addBooktoDatabase(userId,bookName,time,author,type,number) {
-    
-    const result  = await db.query(
-        "insert into book(book_name,user_id,createdtime,author,identifiertype,identifiernumber) values($1,$2,$3,$4,$5,$6)",
-        [bookName,userId,time,author,type,number]
-    )
-    
-    if (result.command == 'INSERT'){
-        console.log("Insertion success")
-        return "success"
-    }else{
-        return "failed"
-    }
+export async function addBooktoDatabase(
+  userId,
+  bookName,
+  time,
+  author,
+  type,
+  number
+) {
+  const result = await db.query(
+    `INSERT INTO book
+     (book_name, user_id, createdtime, author, identifiertype, identifiernumber)
+     VALUES ($1, $2, $3, $4, $5, $6)`,
+    [bookName, userId, time, author, type, number]
+  );
+
+  return result.rowCount === 1 ? "success" : "failed";
 }
 
 export async function deleteBook(book_id) {
-    try{
-        const result = await db.query("delete from book where book_id = $1",[book_id])
-        return `book with id : ${book_id} deleted successfully `
-    }catch(error){
-        return `book not deleted`
-    }
+  const result = await db.query(
+    "DELETE FROM book WHERE book_id = $1",
+    [book_id]
+  );
+
+  return result.rowCount === 1
+    ? `Book with id ${book_id} deleted successfully`
+    : "Book not deleted";
 }
