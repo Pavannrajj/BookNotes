@@ -23,7 +23,7 @@ import {
 } from "./notes.js";
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT||3000;
 
 // Global state variables
 let U_id = null;
