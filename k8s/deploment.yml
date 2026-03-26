@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booknotes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: booknotes
+  template:
+    metadata:
+      labels:
+        app: booknotes
+    spec:
+      containers:
+      - name: booknotes
+        image: 995597568446.dkr.ecr.ap-south-1.amazonaws.com/booknotes:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+        env:
+        - name: PORT
+          value: "3000"
+        - name: DATABASE_URL
+          value: postgresql://neondb_owner:npg_tHhvWnqV32Yr@ep-odd-cloud-adhpdfyq-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
